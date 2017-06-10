@@ -1,1 +1,37 @@
 === Game Design ===
+- 10 Day time limit to save the village from the big baddies
+- The village consists of locations
+- The player moves between locations, exploring and completing tasks
+- Exploration and tasks take time, and when 10 days have passed, the player moves from the preparation stage to the combat stage
+
+=== Start the Game ===
+- 'Help' for available commands
+- 'Village' command describes familiar locations
+- Some exposition from conversation with present NPCs
+
+=== Classes ===
+- Locations
+  - events
+  - things
+    - obvious initial sights
+    - some require investigation to discover
+    - quality/quantity varies between games
+- NPCs:
+  - Current location
+  - Appearance
+  - Information the player knows about them
+  - Attitude
+  - Inventory
+- Rivals (Child of NPC):
+  - 2 randomly generated at start, NPCs who complete tasks and seek to defeat baddies
+  - Move around over time, complete tasks just as player
+  
+  === Location Ideas ===
+  - Pasture
+    - Sheep
+  - Mines
+  - Large Farms - each distinctive
+  - Hoodoo Voodou Spot - hard to find
+    - Spells
+  - Shops
+    - Smith
