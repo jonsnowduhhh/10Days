@@ -133,9 +133,7 @@ Cha = {}
             elif action == "ATTACK":
                 self.attack()
             elif action == "TRAVEL":
-                print(Location.list_of_locations)
                 where_to = input("Travel where? ").upper()
-                print(where_to)
                 if where_to in Location.list_of_locations:
                     days_left -= .25
                     self.travel(where_to)
