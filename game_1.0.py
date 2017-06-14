@@ -1,3 +1,5 @@
+import random
+
 #global variables
 days_left = 10
 
@@ -5,7 +7,6 @@ days_left = 10
 class Location:
 
     list_of_locations = []
-
 
     def __init__(self, loc_name, cur_npcs, mechanics, items):
         self.loc_name = loc_name
@@ -15,12 +16,14 @@ class Location:
 
         self.list_of_locations.append(self.loc_name)
 
-
     def sights(self):
-        #HERES WHERE YOU LEFT OFF
-        print("You see {}".format(self.mechanics))
-        print("You see {} standing around".format(self.cur_npcs))
-
+        print("You see")
+        for thing in self.mechanics:
+            print("{}".format(thing), end=", ")
+        print("")
+        for entity in self.cur_npcs:
+            print("{}".format(entity.name), end=", ")
+        print("")
 
 
 class NPC:
@@ -38,9 +41,7 @@ class NPC:
         self.location = location
         self.backpack = backpack
 
-
     def look(self):
-        #######HERES WHERE YOU LEFT OFF
         self.location.sights()
 
     def pick_up(self):
@@ -56,16 +57,19 @@ class NPC:
         pass
 
     def travel(self, new_loc):
-        self.location = new_loc
+        if new_loc == "TOWN SQUARE":
+            self.location = town_square
+        elif new_loc == "SHEEP PASTURE":
+            self.location = sheep_pasture
+        elif new_loc == "BLACKSMITH":
+            self.location = blacksmith
 
 
-#player subclass
 class Player(NPC):
-
+#player subclass
 
     def __init__(self, name, age, sex, str, dex, con, int, wis, cha, location, backpack):
         super().__init__(name, age, sex, str, dex, con, int, wis, cha, location, backpack)
-
 
     def commands(self):
         print("""
@@ -86,7 +90,7 @@ class Player(NPC):
     """)
 
     def cur_loc(self):
-        print(self.location)
+        print(self.location.loc_name)
 
     def inventory(self):
         print(self.backpack)
@@ -102,12 +106,12 @@ Wis = {}
 Cha = {}
         """.format(self.name, self.str, self.dex, self.con, self.int, self.wis, self.cha))
 
-
-    #main loop for player
     def action(self):
+    #main loop for player
         global days_left
 
         while True:
+            print("You have {} days left until the REAL_BAD_DUDES show up".format(days_left))
             print("What now?")
             action = input("༼☉ɷ⊙༽ > ").upper()
             if action == "COMMANDS":
@@ -119,7 +123,6 @@ Cha = {}
             elif action == "STATS":
                 self.stats()
             elif action == "LOOK":
-                #HERES WHERE YOU LEFT OFF
                 self.look()
             elif action == "PICK UP" or action == "PICKUP":
                 self.pick_up()
@@ -141,17 +144,15 @@ Cha = {}
             else:
                 print("That's not a valid command")
 
+#JUST FUCKIN AROUND WITH CREATING INSTANCES AND FUNCTIONALITY
 farmer_bob = NPC("Farmer Bob", 72, "male", 13, 9, 17, 5, 5, 3, None, None)
 hilda = NPC("Hilda", 35, "female", 18, 8, 18, 11, 13, 8, None, None)
 
 town_square = Location("TOWN SQUARE", [farmer_bob, hilda], ["gallows", "manure cart"], ["pitchfork", "rock"])
-sheep_pasture = Location("SHEEP PASTURE", None, ["Sheep"], None)
-blacksmith = Location("BlACKSMITH", None, ["Anvil"], ["hammer"])
+sheep_pasture = Location("SHEEP PASTURE", [], ["Sheep"], [])
+blacksmith = Location("BLACKSMITH", [], ["Anvil"], ["hammer"])
 
-Jingo = Player("Jingo", 25, "male", 12, 16, 15, 15, 13, 15, town_square.loc_name, None)
+THEPLAYER = Player("Insert_Player_Name_lols", 25, "male-ish", 12, 16, 15, 15, 13, 15, town_square, [])
 
-for item in Location.list_of_locations:
-    print(item)
-print(Location.list_of_locations)
-Jingo.action()
+THEPLAYER.action()
 
