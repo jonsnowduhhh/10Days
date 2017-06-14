@@ -1,0 +1,33 @@
+1. Location and NPCs
+  Could go either way, but figure out which option is more streamlined...
+  Will have to change how methods work depending on which one.
+  So the question is, (and maybe we don't need to go with just one or the other)  
+    a. List the location within the NPC and Player instances?
+    b. List the NPC/Player in the Location instance?
+  Right now I have both ways implemented. 
+     - "cur_npcs" under parent class Location
+     and
+     - "location" under parent class NPC    
+  
+2. Create Classes/Subclasses for mechanics and items.
+  Also change the methods that reference these to accurately print them. 
+  Right now only constructed strings of mechanics/items are printed
+  for instance
+      def inventory(self):
+        print(self.backpack)  <---- Line 95
+  is referencing the empty list in
+        THEPLAYER = Player("Insert_Player_Name_lols", 25, "male-ish", 12, 16, 15, 15, 13, 15, town_square, [])   <----- Line 155
+  But when the backpack is full of instances of the theoretical Items class, the method will have to reflect that.
+  
+  
+  3. Player/NPC phase 
+    I remember you talking about switching between phases in your dungeon game. I'm not sure how to do that. 
+    If it was up to me, I would just create some kind of method chain in the player while loop and NPC parent class that 
+    controls the NPCs, but yeaaah I'm thinking there's a way better way to do this, like what you were doing in your dungeon game.
+    
+    
+        
+      
+
+  
+  
