@@ -1,7 +1,8 @@
 import random
 
 class Location:
-
+    
+    #change this to a dict, so you can write a simple check when traveling to new location.
     list_of_locations = []
 
     def __init__(self, loc_name, cur_npcs):
@@ -9,6 +10,7 @@ class Location:
         self.cur_npcs = cur_npcs
 
         #add locations to list as you create them, for use in checking if available for travel.
+        #change code to go along with the dict
         self.list_of_locations.append(self.loc_name)
 
     def __str__(self):
