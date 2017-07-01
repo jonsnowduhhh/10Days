@@ -36,6 +36,9 @@ class Character:
 
     def inventory(self):
         print(self.backpack)
+        #once back is full of item objects, it could be something more like:
+        #for item in self.backpack:
+            print(item.name)
 
     def stats(self):
         print("""
@@ -74,7 +77,8 @@ Cha = {}
         pass
 
     def travel(self, new_loc):
-        #use dict here to simplify code, like the look function
+        #use dict here to simplify code, like the look function.
+        #have to create dict in Location parent class instead of list of locations.
         if new_loc == "TOWN SQUARE":
             self.location = town_square
         elif new_loc == "SHEEP PASTURE":
